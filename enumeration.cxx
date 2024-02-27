@@ -124,6 +124,15 @@ namespace mine
         return std::ranges::subrange(enumerator{ begin(r), end(r) }, enumerator{});
     }
 
+    template<std::input_or_output_iterator I, std::sentinel_for<I> S>
+    auto enumerate(I begin, S end)
+    {
+        using enumerator = enumerating_iterator<I, S>;
+        static_assert(std::input_or_output_iterator<enumerator>);
+
+        return std::ranges::subrange(enumerator{ begin, end }, enumerator{});
+    }
+
 }
 
 
@@ -131,6 +140,9 @@ int main()
 {
     const std::vector values { 123, 0, 1, 2, 3, 4, 5, 42 };
     for(const auto& [idx, value] : mine::enumerate(values))
+        std::cout << std::format("{} -> {}\n", idx, value);
+
+    for(const auto& [idx, value] : mine::enumerate(values.rbegin(), values.rend()))
         std::cout << std::format("{} -> {}\n", idx, value);
 
 }
