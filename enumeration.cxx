@@ -143,11 +143,11 @@ int main()
     for(const auto& [idx, value] : mine::enumerate(values))
         std::cout << std::format("{} -> {}\n", idx, value);
 
-    std::cout << "\n reversed:\n";
+    std::cout << "\nreversed:\n";
     for(const auto& [idx, value] : mine::enumerate(values.rbegin(), values.rend()))
         std::cout << std::format("{} -> {}\n", idx, value);
 
-    std::cout << "\n just the middle:\n";
+    std::cout << "\nnot the boundaries:\n";
     for(const auto& [idx, value] : mine::enumerate(next(values.begin()), prev(values.end())))
         std::cout << std::format("{} -> {}\n", idx, value);
 
