@@ -151,6 +151,10 @@ int main()
     for(const auto& [idx, value] : mine::enumerate(next(values.begin()), prev(values.end())))
         std::cout << std::format("{} -> {}\n", idx, value);
 
+    std::cout << "\ntemporary container:\n";
+    for(const auto& [idx, value] : mine::enumerate(std::vector{ -1, -2, -3, -4 }))
+        std::cout << std::format("{} -> {}\n", idx, value);
+
 
 }
 
