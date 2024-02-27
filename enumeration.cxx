@@ -5,6 +5,7 @@
 #include <concepts>
 #include <ranges>
 #include <optional>
+#include <algorithm>
 
 namespace mine
 {
@@ -142,8 +143,14 @@ int main()
     for(const auto& [idx, value] : mine::enumerate(values))
         std::cout << std::format("{} -> {}\n", idx, value);
 
+    std::cout << "\n reversed:\n";
     for(const auto& [idx, value] : mine::enumerate(values.rbegin(), values.rend()))
         std::cout << std::format("{} -> {}\n", idx, value);
+
+    std::cout << "\n just the middle:\n";
+    for(const auto& [idx, value] : mine::enumerate(next(values.begin()), prev(values.end())))
+        std::cout << std::format("{} -> {}\n", idx, value);
+
 
 }
 
